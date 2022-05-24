@@ -24,20 +24,20 @@ services:
     restart: always
     ports: #Ingresamos el puerto para el influxdb
       - 8086:8086
-	#Este puerto es el que tiene por decto el servicio 
+   #Este puerto es el que tiene por decto el servicio 
     networks:
       - grafana_network
     volumes: #Agregaremos el nombre del volumen y además
-	#agregamos la dirección para graficar los datos
+    #agregamos la dirección para graficar los datos
       - influxdb_data:/var/lib/influxdb
     environment:
       - INFLUXDB_DB=grafana #Nombre de nuestra BD
-	#Creamos usuarios y contraseñas
+    #Creamos usuarios y contraseñas
       - INFLUXDB_USER = graf
       - INFLUXDB_USER_PASSWORD = password
-	#Habilitamos la cuenta de administrador 
+    #Habilitamos la cuenta de administrador 
       - INFLUXDB_ADMIN_ENABLED = true
-	#Habilitamos las credenciales para administrador
+    #Habilitamos las credenciales para administrador
       - INFLUXDB_ADMIN_USER = admin1 
       - INFLUXDB_ADMIN_PASSWORD = password 
 networks:
