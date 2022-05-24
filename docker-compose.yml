@@ -9,7 +9,7 @@ services:
     ports: #Ingresamos el puerto que se indico en la topología
       - 3000:3000
     networks: #Indicamos el nombre de nuestra red, para 
-	#nuestro contenedor
+#nuestro contenedor
       - grafana_network
     volumes: #Colocamos la ruta para graficar nuestros datos
       - grafana_data:/var/lib/grafana
