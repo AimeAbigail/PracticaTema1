@@ -1,5 +1,5 @@
-version: "1" #Ingresamos la versión de nuestro contenedor
-#Ingresamos los servicios que vamos a ocupar
+version: "1" #Ingresamos la versión del contenedor
+#Ingresamos los servicios que se ocuparan
 services:
   grafana: #Creamos la imagen de grafana
     image: grafana/grafana
@@ -8,10 +8,9 @@ services:
     restart: always
     ports: #Ingresamos el puerto que se indico en la topología
       - 3000:3000
-    networks: #Indicamos el nombre de nuestra red, para 
-#nuestro contenedor
+    networks: #Indicamos el nombre de la red, para el contenedor
       - grafana_network
-    volumes: #Colocamos la ruta para graficar nuestros datos
+    volumes: #Colocamos la ruta para graficar los datos
       - grafana_data:/var/lib/grafana
     depends_on:
       - influxdb
@@ -24,11 +23,11 @@ services:
     restart: always
     ports: #Ingresamos el puerto para el influxdb
       - 8086:8086
-   #Este puerto es el que tiene por decto el servicio 
+   #Este puerto es el que tiene por defecto el servicio 
     networks:
       - grafana_network
-    volumes: #Agregaremos el nombre del volumen y además
-    #agregamos la dirección para graficar los datos
+    volumes: #Agregaremos el nombre del volumen y 
+    #la dirección para graficar los datos
       - influxdb_data:/var/lib/influxdb
     environment:
       - INFLUXDB_DB=grafana #Nombre de nuestra BD
